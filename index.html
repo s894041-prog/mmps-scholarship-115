@@ -510,6 +510,74 @@
       .category-desc { margin-left: 0; }
       .card-grid { grid-template-columns: 1fr; }
     }
+  
+    /* Countdown Badges & Expired Styles */
+    .countdown-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+    }
+    .countdown-normal {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+    }
+    .countdown-warning {
+      background: #fffbeb;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+    .countdown-urgent {
+      background: #fef2f2;
+      color: #dc2626;
+      border: 1px solid #fecaca;
+      animation: pulseUrgent 1.5s infinite;
+    }
+    .countdown-expired {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #cbd5e1;
+    }
+    @keyframes pulseUrgent {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+      70% { transform: scale(1.02); box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+
+    /* Expired Cards Auto-hide */
+    .card.is-expired {
+      display: none !important;
+    }
+    body.show-expired-active .card.is-expired {
+      display: flex !important;
+      opacity: 0.65;
+      filter: grayscale(0.7);
+      border: 1.5px dashed #94a3b8;
+    }
+
+    .expired-toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8fafc;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      color: #64748b;
+      cursor: pointer;
+      user-select: none;
+    }
+    .expired-toggle-wrapper input {
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
@@ -555,13 +623,17 @@
           <span class="search-icon">🔍</span>
           <input type="text" id="searchInput" placeholder="輸入關鍵字（如：無力繳交、低收、原住民、行天宮、林賴足...）" onkeyup="filterCards()">
         </div>
-        <div class="filter-tags">
+                <div class="filter-tags">
           <button class="filter-btn active" onclick="filterCategory('all', this)">全部獎項</button>
           <button class="filter-btn" onclick="filterCategory('gov', this)">🏛️ 政府與學產</button>
           <button class="filter-btn" onclick="filterCategory('foundation', this)">🌟 民間文教基金</button>
           <button class="filter-btn" onclick="filterCategory('emergency', this)">🎗️ 急難與天災救助</button>
           <button class="filter-btn" onclick="filterCategory('talent', this)">🏆 特殊專長培育</button>
           <button class="filter-btn" onclick="scrollToHistory()">📜 114年名冊參考</button>
+          <label class="expired-toggle-wrapper" title="勾選後可檢視已過截止日的獎助學金項目">
+            <input type="checkbox" id="expiredToggle" onchange="handleExpiredToggle(this)">
+            <span>顯示已截止項目 (<span id="expiredCountText">0</span>)</span>
+          </label>
         </div>
       </div>
 
@@ -578,7 +650,7 @@
         <div class="card-grid">
 
                   <!-- 卡片：原住民在校住宿生住宿及伙食費 -->
-        <div class="card" data-keywords="原住民 原住民族籍 住宿 伙食 住宿生 住宿費 伙食費 教育局" data-category="gov">
+        <div class="card" data-deadline="2026-09-17T16:00:00" data-keywords="原住民 原住民族籍 住宿 伙食 住宿生 住宿費 伙食費 教育局" data-category="gov">
           <div class="card-top">
             <span class="card-category-badge">市府原民專案</span>
             <span class="card-amount-badge">實額補助 (住宿與伙食費)</span>
@@ -615,7 +687,7 @@
         </div>
 
 <!-- 卡片：補助經濟弱勢學生無力繳交代收代辦費 -->
-          <div class="card" data-keywords="代收代辦費 無力繳交 教科書 書籍費 家長會費 團保 弱勢 變故 清寒 833" data-category="gov">
+          <div class="card" data-deadline="2026-09-11T16:00:00" data-keywords="代收代辦費 無力繳交 教科書 書籍費 家長會費 團保 弱勢 變故 清寒 833" data-category="gov">
             <div class="card-top">
               <span class="card-category-badge">市府教育局專案</span>
               <span class="card-amount-badge">每生約 833 元 (實額)</span>
@@ -648,7 +720,7 @@
           </div>
 
           <!-- 卡片：教育部學產基金 -->
-          <div class="card" data-keywords="教育部 學產基金 低收入戶 助學金 2500" data-category="gov">
+          <div class="card" data-deadline="2026-10-08T16:00:00" data-keywords="教育部 學產基金 低收入戶 助學金 2500" data-category="gov">
             <div class="card-top">
               <span class="card-category-badge">政府法定助學金</span>
               <span class="card-amount-badge">每生 2,500 元</span>
@@ -686,7 +758,7 @@
           </div>
 
           <!-- 卡片：原住民文具費 -->
-          <div class="card" data-keywords="原住民 原住民族籍 文具費 教育局 500" data-category="gov">
+          <div class="card" data-deadline="2026-09-02T16:00:00" data-keywords="原住民 原住民族籍 文具費 教育局 500" data-category="gov">
             <div class="card-top">
               <span class="card-category-badge">市府原民教育</span>
               <span class="card-amount-badge">每生 500 元</span>
@@ -735,7 +807,7 @@
         <div class="card-grid">
 
           <!-- 卡片：林賴足女士基金會 -->
-          <div class="card" data-keywords="林賴足 台中縣 林賴足女士教育基金會 單親 失親 變故 清寒 3500" data-category="foundation">
+          <div class="card" data-deadline="2026-09-17T16:00:00" data-keywords="林賴足 台中縣 林賴足女士教育基金會 單親 失親 變故 清寒 3500" data-category="foundation">
             <div class="card-top">
               <span class="card-category-badge">民間文教基金會</span>
               <span class="card-amount-badge">每生 3,500 元</span>
@@ -788,7 +860,7 @@
         <div class="card-grid">
 
           <!-- 卡片：賑災基金會 -->
-          <div class="card" data-keywords="賑災基金會 天然災害 災區 弱勢 受災家庭 5000" data-category="emergency">
+          <div class="card" data-deadline="2026-10-02T16:00:00" data-keywords="賑災基金會 天然災害 災區 弱勢 受災家庭 5000" data-category="emergency">
             <div class="card-top">
               <span class="card-category-badge">天災賑助</span>
               <span class="card-amount-badge">國小每生 5,000 元</span>
@@ -820,7 +892,7 @@
           </div>
 
           <!-- 卡片：行天宮急難濟助 -->
-          <div class="card" data-keywords="台北行天宮 行天宮 急難救助 急難濟助 學生急難 變故 傷病" data-category="emergency">
+          <div class="card" data-deadline="2026-09-15T16:00:00" data-keywords="台北行天宮 行天宮 急難救助 急難濟助 學生急難 變故 傷病" data-category="emergency">
             <div class="card-top">
               <span class="card-category-badge">宗教慈善急難救助</span>
               <span class="card-amount-badge">個案審定 (5,000~10,000元)</span>
@@ -871,7 +943,7 @@
         <div class="card-grid">
 
           <!-- 卡片：行天宮長期培育 -->
-          <div class="card" data-keywords="行天宮 長期培育 資優 體育 藝文 學術 特殊才能 獎助學金" data-category="talent">
+          <div class="card" data-deadline="2026-09-12T16:00:00" data-keywords="行天宮 長期培育 資優 體育 藝文 學術 特殊才能 獎助學金" data-category="talent">
             <div class="card-top">
               <span class="card-category-badge">專長長期培育</span>
               <span class="card-amount-badge">長期培育金 (按期全額補助)</span>
@@ -1006,6 +1078,7 @@
     function toggleRealNames() {
       isNamesRevealed = !isNamesRevealed;
       renderHistoryTable(isNamesRevealed);
+      updateCountdowns();
       const btn = document.getElementById('toggleNameBtn');
       btn.innerText = isNamesRevealed ? '👁️ 切換遮罩保護 (去識別化)' : '🔒 解鎖顯示全名 (校內模式)';
     }
@@ -1041,57 +1114,139 @@
       document.getElementById('mainContent').style.display = 'block';
       studentData = xorDecrypt(ENCRYPTED_PAYLOAD, 'mmps') || [];
       renderHistoryTable(isNamesRevealed);
+      updateCountdowns();
     }
 
     // Check auth on load
     window.addEventListener('DOMContentLoaded', checkAuth);
 
-    function filterCards() {
-      const q = document.getElementById('searchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.card');
-      const sections = document.querySelectorAll('.category-section');
+    
+    // ==========================================
+    // 倒數計時器與自動隱藏/過濾引擎 (Countdown & Filter Engine)
+    // ==========================================
+    let showExpired = false;
+    let currentCategory = 'all';
+
+    function updateCountdowns() {
+      const now = new Date();
+      const cards = document.querySelectorAll('.card[data-deadline]');
+      let expiredCount = 0;
 
       cards.forEach(card => {
-        const text = card.innerText.toLowerCase();
-        const kw = card.getAttribute('data-keywords') ? card.getAttribute('data-keywords').toLowerCase() : '';
-        if (text.includes(q) || kw.includes(q)) {
-          card.style.display = 'flex';
+        const dlStr = card.getAttribute('data-deadline');
+        if (!dlStr) return;
+
+        const deadline = new Date(dlStr);
+        const diffMs = deadline - now;
+        const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+        const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+        let badge = card.querySelector('.countdown-badge');
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'countdown-badge';
+          const cardTop = card.querySelector('.card-top');
+          if (cardTop) cardTop.appendChild(badge);
+        }
+
+        if (diffMs <= 0) {
+          // 已過截止時間
+          expiredCount++;
+          card.classList.add('is-expired');
+          badge.className = 'countdown-badge countdown-expired';
+          badge.innerHTML = '⛔ 校內收件已截止';
+          
+          let dlBox = card.querySelector('.deadline-box');
+          if (dlBox && !dlBox.querySelector('.expired-notice')) {
+            const expNotice = document.createElement('div');
+            expNotice.className = 'expired-notice';
+            expNotice.style.color = '#64748b';
+            expNotice.style.fontWeight = 'bold';
+            expNotice.style.marginTop = '4px';
+            expNotice.innerHTML = '（⚠️ 此項目校內收件期程已過）';
+            dlBox.appendChild(expNotice);
+          }
         } else {
-          card.style.display = 'none';
+          // 未截止
+          card.classList.remove('is-expired');
+          if (diffDays >= 3) {
+            badge.className = 'countdown-badge countdown-normal';
+            badge.innerHTML = `⏳ 倒數 ${diffDays} 天`;
+          } else if (diffDays >= 1) {
+            badge.className = 'countdown-badge countdown-warning';
+            badge.innerHTML = `⚠️ 倒數 ${diffDays} 天 ${diffHours} 小時`;
+          } else {
+            badge.className = 'countdown-badge countdown-urgent';
+            badge.innerHTML = `🔥 最後衝刺：剩餘 ${diffHours} 小時 ${diffMins} 分`;
+          }
         }
       });
 
-      sections.forEach(sec => {
-        const visibleCards = sec.querySelectorAll('.card[style="display: flex;"]');
-        if (visibleCards.length === 0 && q !== '') {
-          sec.style.display = 'none';
-        } else {
-          sec.style.display = 'block';
-        }
-      });
+      const countSpan = document.getElementById('expiredCountText');
+      if (countSpan) countSpan.innerText = expiredCount;
+
+      applyFilter();
+    }
+
+    function handleExpiredToggle(checkbox) {
+      showExpired = checkbox.checked;
+      if (showExpired) {
+        document.body.classList.add('show-expired-active');
+      } else {
+        document.body.classList.remove('show-expired-active');
+      }
+      applyFilter();
+    }
+
+    function filterCards() {
+      applyFilter();
     }
 
     function filterCategory(cat, btn) {
+      currentCategory = cat;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
+      applyFilter();
+    }
 
+    function applyFilter() {
+      const q = document.getElementById('searchInput') ? document.getElementById('searchInput').value.toLowerCase().trim() : '';
       const sections = document.querySelectorAll('.category-section');
-      const cards = document.querySelectorAll('.card');
 
-      if (cat === 'all') {
-        sections.forEach(s => s.style.display = 'block');
-        cards.forEach(c => c.style.display = 'flex');
-      } else {
-        sections.forEach(s => {
-          if (s.getAttribute('data-cat') === cat) {
-            s.style.display = 'block';
-            s.querySelectorAll('.card').forEach(c => c.style.display = 'flex');
+      sections.forEach(sec => {
+        const secCat = sec.getAttribute('data-cat');
+        const cards = sec.querySelectorAll('.card');
+        let secHasVisibleCard = false;
+
+        cards.forEach(card => {
+          const cardCat = card.getAttribute('data-category');
+          const isExpired = card.classList.contains('is-expired');
+          const text = card.innerText.toLowerCase();
+          const kw = card.getAttribute('data-keywords') ? card.getAttribute('data-keywords').toLowerCase() : '';
+          
+          const matchCat = (currentCategory === 'all' || currentCategory === cardCat || currentCategory === secCat);
+          const matchQuery = (q === '' || text.includes(q) || kw.includes(q));
+          const matchExpired = (showExpired || !isExpired);
+
+          if (matchCat && matchQuery && matchExpired) {
+            card.style.display = 'flex';
+            secHasVisibleCard = true;
           } else {
-            s.style.display = 'none';
+            card.style.display = 'none';
           }
         });
-      }
+
+        if (secHasVisibleCard) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
     }
+
+    // 每 60 秒定期刷新倒數與狀態
+    setInterval(updateCountdowns, 60000);
 
     function scrollToHistory() {
       document.getElementById('historySection').scrollIntoView({ behavior: 'smooth' });
