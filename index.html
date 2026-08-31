@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>臺中市外埔區馬鳴國小 115學年度學生獎助學金申辦專區</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --primary-bg: #eff6ff;
+      --accent: #dc2626;
+      --accent-bg: #fef2f2;
+      --success: #15803d;
+      --success-bg: #f0fdf4;
+      --warning: #b45309;
+      --warning-bg: #fffbeb;
+      --gray-50: #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --radius: 12px;
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--gray-800);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .badge-school {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(4px);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.92;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Notice Banner */
+    .notice-bar {
+      background-color: #fff1f2;
+      border-left: 6px solid var(--accent);
+      color: #9f1239;
+      padding: 16px 20px;
+      margin: 24px auto;
+      max-width: 1100px;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .notice-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .notice-text strong {
+      color: #be123c;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Search & Filter */
+    .toolbar {
+      background: white;
+      padding: 18px 24px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-box {
+      flex: 1 1 320px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border: 1.5px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-box input:focus {
+      border-color: var(--primary-light);
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-600);
+      font-size: 1rem;
+    }
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-200);
+      color: var(--gray-700);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover {
+      background: var(--primary-bg);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* Category Section */
+    .category-section {
+      margin-bottom: 40px;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .category-icon {
+      font-size: 1.6rem;
+    }
+    .category-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--gray-800);
+    }
+    .category-desc {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      margin-left: auto;
+    }
+
+    /* Scholarship Card */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #eef2f6;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+    .card-category-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--primary-bg);
+      color: var(--primary);
+    }
+    .card-amount-badge {
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid #bbf7d0;
+    }
+    .card h3 {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--gray-800);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    /* Detail List inside Card */
+    .card-details {
+      flex: 1;
+      margin-bottom: 18px;
+    }
+    .detail-item {
+      margin-bottom: 10px;
+      font-size: 0.92rem;
+    }
+    .detail-label {
+      font-weight: 600;
+      color: var(--gray-700);
+      display: inline-block;
+      min-width: 78px;
+    }
+    .deadline-box {
+      background: var(--accent-bg);
+      border: 1px solid #fecaca;
+      border-radius: 6px;
+      padding: 8px 12px;
+      margin: 12px 0;
+    }
+    .deadline-urgent {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.98rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .deadline-official {
+      font-size: 0.8rem;
+      color: var(--gray-600);
+      margin-top: 2px;
+    }
+
+    /* Action Buttons */
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--gray-200);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-word {
+      background: #2563eb;
+      color: white;
+      border: 1px solid #1d4ed8;
+    }
+    .btn-word:hover {
+      background: #1d4ed8;
+    }
+    .btn-secondary {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+    }
+    .btn-secondary:hover {
+      background: var(--gray-200);
+      color: var(--gray-800);
+    }
+
+    /* Table Section (114 Historical) */
+    .history-section {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-top: 40px;
+      border: 1px solid #eef2f6;
+    }
+    .history-header {
+      margin-bottom: 20px;
+    }
+    .history-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gray-800);
+      margin-bottom: 6px;
+    }
+    .history-header p {
+      font-size: 0.92rem;
+      color: var(--gray-600);
+    }
+    .table-container {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--gray-200);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    thead th {
+      background-color: #1e3a8a;
+      color: white;
+      padding: 12px 14px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    tbody tr {
+      border-bottom: 1px solid var(--gray-200);
+      transition: background 0.15s;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    tbody tr:hover {
+      background-color: #eff6ff;
+    }
+    tbody td {
+      padding: 11px 14px;
+      color: var(--gray-700);
+    }
+    .tag-semester {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--gray-200);
+      color: var(--gray-700);
+    }
+    .tag-lowincome {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .tag-crisis {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 0.88rem;
+      color: var(--gray-600);
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.6rem; }
+      .toolbar { flex-direction: column; align-items: stretch; }
+      .category-header { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .category-desc { margin-left: 0; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <div class="badge-school">臺中市外埔區馬鳴國民小學 教務處註冊組</div>
+      <h1>115學年度 學生獎助學金申辦資訊專區</h1>
+      <p>彙整 115 學年度目前受理之各項官方補助、清寒助學金、天災急難與專長培育計畫，提供班級導師與家長一站式查閱與申請表 Word 檔下載。</p>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- 提前一週截止注意事項 -->
+    <div class="notice-bar">
+      <div class="notice-icon">⏰</div>
+      <div class="notice-text">
+        <strong>【重要行政作業時程提醒】</strong><br>
+        為配合教務處進行學生資格審查、召開初審會議、行政逐級陳核核章及寄發郵戳作業，<br>
+        <strong>專區內所有獎助學金之「校內申請截止日」皆已提前一週（7日）截止</strong>。請各班導師務必留意校內截止期限，提早通知符合資格之學生家長備齊戶口名簿與證明文件，以維護學童權益！
+      </div>
+    </div>
+
+    <!-- 搜尋與篩選工具列 -->
+    <div class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="輸入關鍵字（如：無力繳交、低收、原住民、行天宮、林賴足...）" onkeyup="filterCards()">
+      </div>
+      <div class="filter-tags">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">全部獎項</button>
+        <button class="filter-btn" onclick="filterCategory('gov', this)">🏛️ 政府與學產</button>
+        <button class="filter-btn" onclick="filterCategory('foundation', this)">🌟 民間文教基金</button>
+        <button class="filter-btn" onclick="filterCategory('emergency', this)">🎗️ 急難與天災救助</button>
+        <button class="filter-btn" onclick="filterCategory('talent', this)">🏆 特殊專長培育</button>
+        <button class="filter-btn" onclick="scrollToHistory()">📜 114年名冊參考</button>
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- 分類一：政府法定補助與學產基金 -->
+    <!-- =============================================================== -->
+    <div class="category-section" data-cat="gov">
+      <div class="category-header">
+        <span class="category-icon">🏛️</span>
+        <div class="category-title">政府法定補助與教育部學產基金</div>
+        <div class="category-desc">官方常態性代辦費補助、低收入戶助學金與原住民籍專案補助</div>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- 卡片：補助經濟弱勢學生無力繳交代收代辦費 -->
+        <div class="card" data-keywords="代收代辦費 無力繳交 教科書 書籍費 家長會費 團保 弱勢 變故 清寒 833" data-category="gov">
+          <div class="card-top">
+            <span class="card-category-badge">市府教育局專案</span>
+            <span class="card-amount-badge">每生約 833 元 (實額)</span>
+          </div>
+          <h3>臺中市教育局 115-1 補助無力繳交代收代辦費</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              1. <strong>低收入戶</strong>、2. <strong>中低收入戶</strong>、3. <strong>家庭突遭變故</strong>、<br>
+              4. <strong>經導師認定</strong>經濟困難確實無力繳交者（導師初審訪視推薦）。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">補助項目：</span>
+              • <strong>教科書書籍費</strong>：最高補助 500 元<br>
+              • <strong>學生家長會費</strong>：最高補助 100 元<br>
+              • <strong>學生團體保險費</strong>：全額補助約 233 元（身心障礙學生另依身障規定減免補助者除外）
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 09 月 11 日 (五) 下午 16:00</div>
+              <div class="deadline-official">（開學第2週彙整審查，以利配合三聯繳費單銷帳與局端回報）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1補助經濟弱勢學生代收代辦費調查表.docx" class="btn btn-word" download>
+              📥 下載代收代辦費審查調查表 (Word .docx)
+            </a>
+          </div>
+        </div>
+
+        <!-- 卡片：教育部學產基金 -->
+        <div class="card" data-keywords="教育部 學產基金 低收入戶 助學金 2500" data-category="gov">
+          <div class="card-top">
+            <span class="card-category-badge">政府法定助學金</span>
+            <span class="card-amount-badge">每生 2,500 元</span>
+          </div>
+          <h3>教育部學產基金 115-1 低收入戶學生助學金</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              現持有<strong>低收入戶證明</strong>之在學學生，前一學期在學未受記過以上處分（<strong>小一新生免審前學期成績</strong>）。未領取公教人員子女教育補助或其他各類政府學雜費減免重複補助。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 申請表暨切結書<br>
+              2. 115年度低收入戶證明正本或影本<br>
+              3. 新式戶口名簿影本（含詳細記事）
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 10 月 08 日 (四) 下午 16:00</div>
+              <div class="deadline-official">（官方系統上傳截止日：115年10月15日24時，逾期無補辦機制）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1教育部學產基金低收入戶助學金申請表及切結書.docx" class="btn btn-word" download>
+              📥 下載申請表暨切結書 (Word .docx)
+            </a>
+            <a href="downloads/學產基金申請說明(PDF).pdf" class="btn btn-secondary" target="_blank">
+              📄 查看學產基金申請說明 (PDF)
+            </a>
+            <a href="downloads/學產基金實施要點(PDF).pdf" class="btn btn-secondary" target="_blank">
+              📜 實施要點法規 (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- 卡片：原住民文具費 -->
+        <div class="card" data-keywords="原住民 原住民族籍 文具費 教育局 500" data-category="gov">
+          <div class="card-top">
+            <span class="card-category-badge">市府原民教育</span>
+            <span class="card-amount-badge">每生 500 元</span>
+          </div>
+          <h3>115學年度第1學期 國民小學原住民籍學生文具費</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              具有<strong>原住民族身分註記</strong>之本校在學學童（戶口名簿需有族別註記）。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 具有原住民族身分註記之戶口名簿影本或謄本<br>
+              2. 學校印領清冊（由學校統一造冊核章送分區學校北屯國小）
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 09 月 02 日 (三) 下午 16:00</div>
+              <div class="deadline-official">（局端分區協辦學校收件截止日：115年9月9日）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1臺中市原住民籍學生文具費印領清冊.docx" class="btn btn-word" download>
+              📥 下載原住民學生文具費印領清冊 (Word .docx)
+            </a>
+            <a href="downloads/原住民學生文具費結算表(ODS).ods" class="btn btn-secondary" download>
+              📊 經費結算表 (ODS)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- 分類二：民間文教基金會助學金 -->
+    <!-- =============================================================== -->
+    <div class="category-section" data-cat="foundation">
+      <div class="category-header">
+        <span class="category-icon">🌟</span>
+        <div class="category-title">民間文教慈善基金會助學金</div>
+        <div class="category-desc">鼓勵困境家庭學童努力向學、品學兼優助學金</div>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- 卡片：林賴足女士基金會 -->
+        <div class="card" data-keywords="林賴足 台中縣 林賴足女士教育基金會 單親 失親 變故 清寒 3500" data-category="foundation">
+          <div class="card-top">
+            <span class="card-category-badge">民間文教基金會</span>
+            <span class="card-amount-badge">每生 3,500 元</span>
+          </div>
+          <h3>台中縣林賴足女士教育基金會 115-1 國小助學金</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              設籍臺中、彰化、南投之國小在學學生，因<strong>單親、父母雙亡(失親)、家庭突遭變故或生活陷入困境者</strong>。<br>
+              成績要求：學業平均 <strong>80 分以上</strong>，日常生活表現良好，未領其他獎助學金者優先。<br>
+              <strong>※ 推薦名額：全校限額 1 名（由學校初審擇優送件）。</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 申請書<br>
+              2. 前學期成績單（新生附在學證明）<br>
+              3. 戶籍謄本或新式戶口名簿影本<br>
+              4. 低收/中低收或變故清寒證明、個資告知書
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 09 月 17 日 (四) 下午 16:00</div>
+              <div class="deadline-official">（基金會官方郵戳截止日：115年9月24日，逾期不受理）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1台中縣林賴足女士教育基金會國小助學金申請書.docx" class="btn btn-word" download>
+              📥 下載林賴足助學金申請書 (Word .docx)
+            </a>
+            <a href="downloads/林賴足女士教育基金會助學金辦法(PDF).pdf" class="btn btn-secondary" target="_blank">
+              📄 查看基金會申請辦法 (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- 分類三：急難救助與重大天災救助 -->
+    <!-- =============================================================== -->
+    <div class="category-section" data-cat="emergency">
+      <div class="category-header">
+        <span class="category-icon">🎗️</span>
+        <div class="category-title">天然災害弱勢受災與急難救助</div>
+        <div class="category-desc">協助重大變故、天災受災或主要家計者失能之弱勢學童</div>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- 卡片：賑災基金會 -->
+        <div class="card" data-keywords="賑災基金會 天然災害 災區 弱勢 受災家庭 5000" data-category="emergency">
+          <div class="card-top">
+            <span class="card-category-badge">天災賑助</span>
+            <span class="card-amount-badge">國小每生 5,000 元</span>
+          </div>
+          <h3>財團法人賑災基金會 115-1 重大天然災害災區助學金</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              國內<strong>重大天然災害災區之低收入戶、中低收入戶或受災弱勢家庭子女</strong>。協助解決受災家庭子女因天災致使生活困難之就學障礙。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 賑災基金會助學金申請表<br>
+              2. 鄉鎮市區公所出具之受災證明（如房屋毀損、傷亡等證明）<br>
+              3. 低收/中低收證明或弱勢證明、戶籍證明
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 10 月 02 日 (五) 下午 16:00</div>
+              <div class="deadline-official">（官方郵戳截止日：115年10月10日止）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1財團法人賑災基金會助學金申請辦法及表格.docx" class="btn btn-word" download>
+              📥 下載賑災助學金申請表與辦法 (Word .docx)
+            </a>
+          </div>
+        </div>
+
+        <!-- 卡片：行天宮急難濟助 -->
+        <div class="card" data-keywords="台北行天宮 行天宮 急難救助 急難濟助 學生急難 變故 傷病" data-category="emergency">
+          <div class="card-top">
+            <span class="card-category-badge">宗教慈善急難救助</span>
+            <span class="card-amount-badge">個案審定 (5,000~10,000元)</span>
+          </div>
+          <h3>財團法人台北行天宮 115學年度「學生急難濟助」</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">申請資格：</span>
+              因<strong>主要生計負擔者死亡、罹患重病傷病、非自願失業、入獄服刑或家庭突遭不可抗力之重大緊急事故</strong>，導致家庭經濟陷入困境、無力負擔就學生活費用之在學學生。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 行天宮急難濟助個案轉介申請表<br>
+              2. 學校導師/訪視人員訪視評估推薦意見表（國小專用版）<br>
+              3. 全戶戶口名簿影本或戶籍謄本<br>
+              4. 重大急難證明文件（公立醫院診斷證明書、失業證明等）
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 第一梯校內收件：115 年 09 月 15 日 (一) 下午 16:00</div>
+              <div class="deadline-official">（常態隨到隨辦：重大事故發生 6 個月內均可隨時提報送件）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1行天宮急難濟助個案轉介申請表與學校評估表.docx" class="btn btn-word" download>
+              📥 下載急難濟助轉介表與訪視表 (Word .docx)
+            </a>
+            <a href="downloads/行天宮急難濟助辦法與表件(PDF).pdf" class="btn btn-secondary" target="_blank">
+              📄 查看完整濟助辦法與表件 (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- 分類四：特殊專長與資優培育 -->
+    <!-- =============================================================== -->
+    <div class="category-section" data-cat="talent">
+      <div class="category-header">
+        <span class="category-icon">🏆</span>
+        <div class="category-title">特殊專長與資優學生長期培育計畫</div>
+        <div class="category-desc">針對具特殊專長才能之經濟弱勢學生提供長期經費補助</div>
+      </div>
+
+      <div class="card-grid">
+
+        <!-- 卡片：行天宮長期培育 -->
+        <div class="card" data-keywords="行天宮 長期培育 資優 體育 藝文 學術 特殊才能 獎助學金" data-category="talent">
+          <div class="card-top">
+            <span class="card-category-badge">專長長期培育</span>
+            <span class="card-amount-badge">長期培育金 (按期全額補助)</span>
+          </div>
+          <h3>財團法人台北行天宮 115學年度「長期培育獎助學金」</h3>
+          
+          <div class="card-details">
+            <div class="detail-item">
+              <span class="detail-label">培育對象：</span>
+              經濟弱勢（低收、中低收、特殊境遇或經師長訪視確認清寒），且在以下領域具<strong>特殊才能或優異競賽成績</strong>者：<br>
+              • <strong>學術研究</strong>、• <strong>體育競技</strong>（如田徑、球類等）、• <strong>藝文創作/展演</strong>（如音樂、美術、書法等）。
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">應附文件：</span>
+              1. 長期培育申請書<br>
+              2. 推薦師長評估指標與具體事實陳述表<br>
+              3. 近二年內各級競賽獲獎獎狀影本、成績證明或作品集<br>
+              4. 弱勢家境證明與戶籍謄本
+            </div>
+            <div class="deadline-box">
+              <div class="deadline-urgent">⚠️ 校內收件截止：115 年 09 月 12 日 (五) 下午 16:00</div>
+              <div class="deadline-official">（官方郵戳截止日：115年9月20日止）</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="downloads/115-1行天宮資優學生長期培育獎助學金申請書與推薦表.docx" class="btn btn-word" download>
+              📥 下載長期培育申請書與推薦表 (Word .docx)
+            </a>
+            <a href="downloads/行天宮長期培育獎學金辦法與表件(PDF).pdf" class="btn btn-secondary" target="_blank">
+              📄 查看實施辦法與評審指標 (PDF)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- 歷史參考區：114 學年度受獎名單 -->
+    <!-- =============================================================== -->
+    <div class="history-section" id="historySection">
+      <div class="history-header">
+        <h2>📜 114 學年度 各類獎助學金受獎名單（行政對照參考）</h2>
+        <p>提供現任各班導師參考去年（114學年度）獲獎學童名單，協助比對貴班學生是否仍具低收入戶、中低收入戶或家庭急難事由，以便提早主動輔導申請：</p>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>學期</th>
+              <th>獎助學金項目</th>
+              <th>114原年級</th>
+              <th>學生姓名</th>
+              <th>身分別 / 事由</th>
+              <th>補助金額</th>
+              <th>115本學年班級(升級)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>三年甲班</td>
+              <td><strong>朱謙牧</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>四年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>三年甲班</td>
+              <td><strong>林芯如</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>四年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>四年甲班</td>
+              <td><strong>吳柏諺</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>四年甲班</td>
+              <td><strong>范品睿</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>四年甲班</td>
+              <td><strong>朱子葳</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td><strong>教育部學產基金</strong></td>
+              <td>五年甲班</td>
+              <td><strong>林芯卉</strong></td>
+              <td><span class="tag-lowincome">低收入戶</span></td>
+              <td>2,500 元 / 期</td>
+              <td><strong>六年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1</span></td>
+              <td>同濟兒童基金會 清寒優秀</td>
+              <td>四年甲班</td>
+              <td><strong>張欽堡</strong></td>
+              <td>清寒優秀</td>
+              <td>2,500 元</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1</span></td>
+              <td>同濟兒童基金會 清寒優秀</td>
+              <td>二年甲班</td>
+              <td><strong>李佳芯</strong></td>
+              <td>清寒優秀</td>
+              <td>2,500 元</td>
+              <td><strong>三年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-2</span></td>
+              <td>同濟兒童嘉元獎助學金</td>
+              <td>一年甲班</td>
+              <td><strong>李宥丞</strong></td>
+              <td>清寒嘉元</td>
+              <td>12,000 元</td>
+              <td><strong>二年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-2</span></td>
+              <td>同濟兒童嘉元獎助學金</td>
+              <td>二年甲班</td>
+              <td><strong>賴璿恩</strong></td>
+              <td>清寒嘉元</td>
+              <td>12,000 元</td>
+              <td><strong>三年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-2</span></td>
+              <td>雲濟慈善會 清寒助學金</td>
+              <td>四年甲班</td>
+              <td><strong>朱子葳</strong></td>
+              <td>清寒弱勢</td>
+              <td>2,000 元</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-2</span></td>
+              <td>雲濟慈善會 清寒助學金</td>
+              <td>六年甲班</td>
+              <td><strong>陳宇樂</strong></td>
+              <td>清寒弱勢</td>
+              <td>2,000 元</td>
+              <td>已畢業</td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>一年甲班</td>
+              <td>朱德展</td>
+              <td><span class="tag-lowincome">中低收入戶</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>二年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>一年甲班</td>
+              <td>張禕芹、劉芸亘</td>
+              <td><span class="tag-crisis">家庭突遭變故</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>二年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>二年甲班</td>
+              <td>張欽富、賴璿恩、顏宥宇</td>
+              <td><span class="tag-crisis">變故/身障</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>三年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>二年甲班</td>
+              <td>林浩瑋</td>
+              <td><span class="tag-lowincome">中低收入戶</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>二年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>四年甲班</td>
+              <td>張欽堡、呂柏任</td>
+              <td><span class="tag-crisis">家庭突遭變故</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>五年甲班</strong></td>
+            </tr>
+            <tr>
+              <td><span class="tag-semester">114-1/2</span></td>
+              <td>補助無力繳交代收代辦費</td>
+              <td>五年甲班</td>
+              <td>洪敬華、劉鼎碩</td>
+              <td><span class="tag-crisis">變故/身障</span></td>
+              <td>教科書+團保補助</td>
+              <td><strong>六年甲班</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>
+      <p>臺中市外埔區馬鳴國民小學 教務處註冊組 編製 ｜ 聯絡分機：教務組長 (04) 2683-xxxx</p>
+      <p style="margin-top: 6px; font-size: 0.8rem; color: #94a3b8;">建議使用 Chrome、Edge 或 Safari 瀏覽器以獲得最佳瀏覽與下載體驗 ｜ 檔案更新日期：2026年8月31日</p>
+    </footer>
+
+  </div>
+
+  <script>
+    function filterCards() {
+      const q = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.card');
+      const sections = document.querySelectorAll('.category-section');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const kw = card.getAttribute('data-keywords') ? card.getAttribute('data-keywords').toLowerCase() : '';
+        if (text.includes(q) || kw.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      sections.forEach(sec => {
+        const visibleCards = sec.querySelectorAll('.card[style="display: flex;"]');
+        if (visibleCards.length === 0 && q !== '') {
+          sec.style.display = 'none';
+        } else {
+          sec.style.display = 'block';
+        }
+      });
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const sections = document.querySelectorAll('.category-section');
+      const cards = document.querySelectorAll('.card');
+
+      if (cat === 'all') {
+        sections.forEach(s => s.style.display = 'block');
+        cards.forEach(c => c.style.display = 'flex');
+      } else {
+        sections.forEach(s => {
+          if (s.getAttribute('data-cat') === cat) {
+            s.style.display = 'block';
+            s.querySelectorAll('.card').forEach(c => c.style.display = 'flex');
+          } else {
+            s.style.display = 'none';
+          }
+        });
+      }
+    }
+
+    function scrollToHistory() {
+      document.getElementById('historySection').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
